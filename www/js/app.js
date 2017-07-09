@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         views: {
           'tab-dash': {
             templateUrl: 'templates/leaderboard.html',
-            controller: 'LeaderboardCtrl'
+            controller: 'DashCtrl'
           }
         }
       })
