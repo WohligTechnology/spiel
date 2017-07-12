@@ -1,0 +1,35 @@
+<ion-view view-title="TaskList">
+  <ion-nav-bar class="bar-positive">
+
+  </ion-nav-bar>
+
+  <ion-content>
+    <!--<section ng-repeat="task in tasks">
+      <div class="heading">
+        <h4>{{task.heading}}</h4>
+      </div>
+      <div class="list" ng-repeat="t in task.tasks">
+
+        <div class="item item-button-right">
+          {{t}}
+
+          <button class="button button-positive">
+      Details
+    </button>
+        </div>
+
+      </div>
+    </section>-->
+    <ion-list>
+      <div ng-repeat="group in task">
+        <ion-item class="item-stable" ng-click="toggleGroup(t)" ng-class="{active: isGroupShown(t)}" ng-repeat="t in group.tasks">
+          <i class="icon" ng-class="isGroupShown(t) ? 'ion-minus' : 'ion-plus'"></i> &nbsp; {{t}}
+        </ion-item>
+        <ion-item class="item-accordion" ng-repeat="item in group.tasks" ng-show="isGroupShown(group.tasks)">
+          {{item}}
+        </ion-item>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

@@ -1,14 +1,19 @@
 <ion-view view-title="Leaderboard">
+  <ion-nav-bar class="bar-positive">
+
+  </ion-nav-bar>
+
   <ion-content>
     <div class="list">
 
-      <a class="item item-avatar" href="#">
+      <a class="item item-avatar" href="#" ng-repeat="user in userlist">
       <img src="img/images.jpg">
-      <h2>Bhargav</h2>
-      <p>Ratings: <span><i class="icon ion-star"></i> <i class="icon ion-star"></i></span></p>
-      <p>Current Level: <span>Fresher</span></p>
+      <h2>{{user.firstname}} {{user.lastname}}</h2>
+      <p>Ratings: <span><i class="icon ion-star"></i><i class="icon ion-star"></i></span></p>
+      <p>Current Level: <span>{{user.currentLevel}}</span></p>
     </a>
 
     </div>
+
   </ion-content>
 </ion-view>
