@@ -10,11 +10,10 @@
   </ion-nav-buttons>
 
   <ion-content>
-
     <!-- profile -->
     <div class="item item-avatar item-button-right">
       <img src="img/images.jpg">
-      <h2>{{user.currentLevel}}</h2>
+      <h2>{{user.currentLevel}} </h2>
       <p><span>22 July 2017</span></p>
     </div>
     <!-- end of profile -->
@@ -25,7 +24,7 @@
         Lodash
       </div>
 
-      <a class="item item-icon-right">
+      <a class="item item-icon-right" ng-click="createRequestSkill();">
     _.each
     <i class="icon ion-ios-plus-outline positive"></i>
   </a>
@@ -39,7 +38,7 @@
   </a>
       <a class="item item-icon-right">
     _.cloneDeep
-    <i class="icon ion-ios-close-outline assertive"></i>
+    <i class="icon ion-ios-close-outline stable"></i>
   </a>
 
       <div class="item item-divider">

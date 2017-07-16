@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
 
   .controller('LoginCtrl', function ($scope) {
 
@@ -24,12 +24,47 @@ angular.module('starter.controllers', [])
       }
     ];
   })
-  .controller('ProfileCtrl', function ($scope) {
+  .controller('ProfileCtrl', function ($scope, $ionicPopup) {
     $scope.user = {
       firstName: "Sanket",
       lastName: "Deshmukh",
       currentLevel: "Full Stack Developer"
     };
+
+    $scope.popupForm = {
+      requestReason: ""
+    };
+
+    $scope.createRequestSkill = function () {
+      var myPopup = $ionicPopup.show({
+        template: '<textarea ng-model="popupForm.requestReason" style="padding:10px;resize:none;" rows="4" cols="50" placeholder="Please enter your details for your request"></textarea>',
+        title: 'Skill Moderation Requested',
+        scope: $scope,
+        buttons: [{
+            text: 'Cancel',
+            onTap: function (e) {
+              $scope.popupForm = {
+                requestReason: ""
+              };
+            }
+          },
+          {
+            text: 'Request',
+            type: 'button-positive',
+            onTap: function (e) {
+              if ($scope.popupForm.requestReason === "") {
+                e.preventDefault();
+              } else {
+                $scope.popupForm = {
+                  requestReason: ""
+                };
+              }
+            }
+          }
+        ]
+      });
+    };
+
   })
   .controller('DesignationCtrl', function ($scope) {
     $scope.designations = [{
