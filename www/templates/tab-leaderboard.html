@@ -1,11 +1,13 @@
-<ion-view view-title="Leaderboard">
+<ion-view>
   <ion-nav-bar class="bar-positive">
-
   </ion-nav-bar>
+  <ion-nav-title>
+    Leaderboard
+  </ion-nav-title>
 
   <ion-content>
     <div class="list">
-      <a class="item item-avatar item-icon-right" ng-repeat="user in userlist" ui-sref="tab.profile({id:user._id})">
+      <a class="item item-avatar item-icon-right" ng-repeat="user in userlist" ui-sref="tab.profileDetail({id:user._id})">
       <img src="img/images.jpg">
       <h2>{{user.name}}</h2>
       <p><span>{{user.designation|designations}}</span></p>

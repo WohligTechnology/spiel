@@ -40,6 +40,7 @@ angular.module('starter.controllers', ['ionic'])
     $scope.user = Skill.getUser();
   })
   .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
+    console.log("this is profile controller");
     if ($stateParams.id === "" || !$stateParams.id || $stateParams.id == Skill.getUser()._id) {
       $scope.myProfile = true;
     }
@@ -89,6 +90,22 @@ angular.module('starter.controllers', ['ionic'])
       });
     };
 
+  })
+  .controller('ProfileDetailCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
+    console.log("this is profile Detail controller");
+
+    Skill.getUserSkill($stateParams.id, function (data) {
+      $scope.user = data.data.user;
+      _.each(data.data.requestedSkill, function (n) {
+        var skillNo = _.findIndex(data.data.skill, function (m) {
+          return m._id == n.skill;
+        });
+        if (skillNo >= 0) {
+          data.data.skill[skillNo].approvalStatus = n.approvalStatus;
+        }
+      });
+      $scope.skills = _.groupBy(data.data.skill, "skillCategory.name");
+    });
   })
   .controller('DesignationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();

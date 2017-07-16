@@ -70,8 +70,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
 
+      .state('tab.profileDetail', {
+        url: '/leaderboard-detail/:id',
+        views: {
+          'tab-leaderboard': {
+            templateUrl: 'templates/profile-detail.html',
+            controller: 'ProfileDetailCtrl'
+          }
+        }
+      })
       .state('tab.profile', {
-        url: '/profile/:id',
+        url: '/profile',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',

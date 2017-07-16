@@ -1,9 +1,16 @@
 <ion-view>
+
   <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button class="button-clear">
+    </ion-nav-back-button>
   </ion-nav-bar>
   <ion-nav-title>
     {{user.name}}
   </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon icon ion-ios-telephone-outline" ng-href="tel:{{user.mobile}}">
+    </a>
+  </ion-nav-buttons>
 
   <ion-content>
     <!-- profile -->
