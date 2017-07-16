@@ -1,7 +1,10 @@
 angular.module('starter.controllers', ['ionic'])
 
   .controller('LoginCtrl', function ($scope, Skill) {
-
+    $scope.form = {};
+    $scope.login = function () {
+      console.log("Hi", $scope.form)
+    }
   })
   .controller('VerificationCtrl', function ($scope, Skill) {
 
