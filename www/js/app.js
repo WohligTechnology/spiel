@@ -53,50 +53,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
       // Each tab has its own nav history stack:
 
-      .state('tab.dash', {
-        url: '/dash',
+      .state('tab.leaderboard', {
+        url: '/leaderboard',
         views: {
-          'tab-dash': {
-            templateUrl: 'templates/leaderboard.html',
+          'tab-leaderboard': {
+            templateUrl: 'templates/tab-leaderboard.html',
             controller: 'LeaderboardCtrl'
           }
         }
       })
 
-      .state('tab.chats', {
-        url: '/chats',
+      .state('tab.profile', {
+        url: '/profile/:id',
         views: {
-          'tab-chats': {
-            templateUrl: 'templates/tab-chats.html',
-            controller: 'ChatsCtrl'
+          'tab-profile': {
+            templateUrl: 'templates/tab-profile.html',
+            controller: 'ProfileCtrl'
           }
         }
       })
-      .state('tab.list', {
-        url: '/list',
+      .state('tab.designation', {
+        url: '/designation',
         views: {
-          'tab-list': {
-            templateUrl: 'templates/tab-list.html',
-            controller: 'ListCtrl'
-          }
-        }
-      })
-      .state('tab.chat-detail', {
-        url: '/chats/:chatId',
-        views: {
-          'tab-chats': {
-            templateUrl: 'templates/chat-detail.html',
-            controller: 'ChatDetailCtrl'
+          'tab-designation': {
+            templateUrl: 'templates/tab-designation.html',
+            controller: 'DesignationCtrl'
           }
         }
       })
 
-      .state('tab.account', {
-        url: '/account',
+      .state('tab.notification', {
+        url: '/notification',
         views: {
-          'tab-account': {
-            templateUrl: 'templates/tab-account.html',
-            controller: 'AccountCtrl'
+          'tab-notification': {
+            templateUrl: 'templates/tab-notification.html',
+            controller: 'NotificationCtrl'
           }
         }
       });
