@@ -34,6 +34,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $ionicConfigProvider.backButton.previousTitleText(false);
     $ionicConfigProvider.backButton.icon('ion-ios-arrow-left');
     $ionicConfigProvider.backButton.text('');
+    $ionicConfigProvider.views.maxCache(0);
+
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.

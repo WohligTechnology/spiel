@@ -43,6 +43,17 @@ angular.module('starter.services', [])
           }
         });
       },
+      logout: function (data, callback) {
+        $.jStorage.flush();
+        $state.go("login");
+        $http.post(adminUrl + "user/logout", data).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
+      },
       getLeaderboard: function (callback) {
         $http.post(adminUrl + "user/getUserList", {
           _accessToken: user.accessToken

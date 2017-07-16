@@ -46,6 +46,23 @@ angular.module('starter.controllers', ['ionic'])
       $scope.myProfile = true;
     }
 
+
+    // A confirm dialog for logout
+    $scope.logout = function () {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Logout',
+        template: 'Are you sure you want to logout?'
+      });
+
+      confirmPopup.then(function (res) {
+        if (res) {
+          Skill.logout();
+        }
+      });
+    };
+
+
+
     function refresh() {
       Skill.getUserSkill($stateParams.id, function (data) {
         _.assign($scope, data);
@@ -53,7 +70,7 @@ angular.module('starter.controllers', ['ionic'])
     }
     refresh();
 
-
+    // request skill form
     function requestSkill(skill, reason) {
       skill.approvalStatus = "Pending";
       Skill.requestSkill(skill, reason, function (data) {

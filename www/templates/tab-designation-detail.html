@@ -16,9 +16,9 @@
           {{skillCategory}}
         </div>
 
-        <a class="item item-icon-right" ng-click="createRequestSkill(skill);" ng-repeat="skill in subSkills">
+        <a class="item item-icon-right" ng-repeat="skill in subSkills">
     {{skill.name}}
-     <i class="icon {{skill.approvalStatus|skillStatusIcon:myProfile}}"></i>
+     <!-- <i class="icon {{skill.approvalStatus|skillStatusIcon:myProfile}}"></i> -->
   </a>
   </ion-content>
 </ion-view>
