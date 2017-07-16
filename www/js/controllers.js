@@ -7,23 +7,26 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
+    Skill.getLeaderboard(function (data) {
+      $scope.userlist = data.data;
+    });
     $scope.user = Skill.getUser();
-    $scope.userlist = [{
-        firstname: 'Bhargav',
-        lastname: 'Purohit',
-        currentLevel: "Fresher"
-      },
-      {
-        firstname: 'Ashish',
-        lastname: 'Zanwar',
-        currentLevel: "Full Stack"
-      },
-      {
-        firstname: 'Sanket',
-        lastname: 'Deshmukh',
-        currentLevel: "Full Stack"
-      }
-    ];
+    // $scope.userlist = [{
+    //     firstname: 'Bhargav',
+    //     lastname: 'Purohit',
+    //     currentLevel: "Fresher"
+    //   },
+    //   {
+    //     firstname: 'Ashish',
+    //     lastname: 'Zanwar',
+    //     currentLevel: "Full Stack"
+    //   },
+    //   {
+    //     firstname: 'Sanket',
+    //     lastname: 'Deshmukh',
+    //     currentLevel: "Full Stack"
+    //   }
+    // ];
   })
   .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill) {
     $scope.user = Skill.getUser();

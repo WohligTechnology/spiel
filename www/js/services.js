@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-  .factory('Skill', function ($state) {
+  .factory('Skill', function ($state, $http) {
     // Might use a resource here that returns a JSON array
 
     // Some fake testing data
@@ -10,8 +10,16 @@ angular.module('starter.services', [])
       getUserSkill: function () {
 
       },
-      getLeaderBoard: function () {
-
+      getLeaderboard: function (callback) {
+        $http.post(adminUrl + "user/getUserList", {
+          _accessToken: user.accessToken
+        }).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
       },
       getUser: function () {
         if (!user) {
