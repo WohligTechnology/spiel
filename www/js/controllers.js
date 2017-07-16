@@ -7,16 +7,11 @@ angular.module('starter.controllers', ['ionic'])
         console.log("Data", data);
         if (data.value) {
           Skill.setUser(data.data);
-<<<<<<< HEAD
-          $state.go("tab.leaderboard");
-=======
-          console.log("Success");
           if (data.data.accessLevel !== "Pending") {
             $state.go("tab.leaderboard");
           } else {
             $state.go("verification");
           }
->>>>>>> 581e229f127b6bb68f9814c6d20a0583dab64958
         }
       });
     };
