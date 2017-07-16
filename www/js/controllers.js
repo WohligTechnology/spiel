@@ -8,13 +8,31 @@ angular.module('starter.controllers', ['ionic'])
         if (data.value) {
           Skill.setUser(data.data);
           console.log("Success");
-          $state.go("tab.leaderboard");
+          if (data.data.accessLevel !== "Pending") {
+            $state.go("tab.leaderboard");
+          } else {
+            $state.go("verification");
+          }
         }
       })
     }
   })
-  .controller('VerificationCtrl', function ($scope, Skill) {
-
+  .controller('VerificationCtrl', function ($scope, Skill, $state) {
+    var form = {
+      accessToken: $.jStorage.get("user").accessToken
+    }
+    $scope.refresh = function () {
+      Skill.login(form, function (data) {
+        if (data.value) {
+          Skill.setUser(data.data);
+          if (data.data.accessLevel !== "Pending") {
+            $state.go("tab.leaderboard");
+          } else {
+            $state.go("verification");
+          }
+        }
+      })
+    }
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
     Skill.getLeaderboard(function (data) {
