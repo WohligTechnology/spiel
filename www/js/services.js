@@ -7,11 +7,19 @@ angular.module('starter.services', [])
 
     var user = $.jStorage.get("user");
     return {
-      getUserSkill: function () {
-
+      getUserSkill: function (data) {
+        $http.post(adminUrl + "user/getDetails", {
+          _accessToken: user.accessToken,
+          user: data
+        }).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
       },
       login: function (data, callback) {
-        console.log(data);
         $http.post(adminUrl + "user/Login", data).then(function (data) {
           if (data.status == 200) {
             callback(data.data);
