@@ -1,12 +1,14 @@
 angular.module('starter.controllers', ['ionic'])
 
-  .controller('LoginCtrl', function ($scope, Skill) {
+  .controller('LoginCtrl', function ($scope, Skill, $state) {
     $scope.form = {};
     $scope.login = function () {
       Skill.login($scope.form, function (data) {
         console.log("Data", data);
         if (data.value) {
+          Skill.setUser(data.data);
           console.log("Success");
+          $state.go("tab.leaderboard");
         }
       })
     }

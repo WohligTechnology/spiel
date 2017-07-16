@@ -13,8 +13,11 @@ angular.module('starter.services', [])
       login: function (data, callback) {
         console.log(data);
         $http.post(adminUrl + "user/Login", data).then(function (data) {
-          console.log("Data", data);
-          callback(data);
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
         });
       },
       getLeaderboard: function (callback) {
