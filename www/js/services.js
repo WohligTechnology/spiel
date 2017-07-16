@@ -10,6 +10,13 @@ angular.module('starter.services', [])
       getUserSkill: function () {
 
       },
+      login: function (data, callback) {
+        console.log(data);
+        $http.post(adminUrl + "user/Login", data).then(function (data) {
+          console.log("Data", data);
+          callback(data);
+        });
+      },
       getLeaderboard: function (callback) {
         $http.post(adminUrl + "user/getUserList", {
           _accessToken: user.accessToken

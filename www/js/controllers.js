@@ -3,7 +3,12 @@ angular.module('starter.controllers', ['ionic'])
   .controller('LoginCtrl', function ($scope, Skill) {
     $scope.form = {};
     $scope.login = function () {
-      console.log("Hi", $scope.form)
+      Skill.login($scope.form, function (data) {
+        console.log("Data", data);
+        if (data.value) {
+          console.log("Success");
+        }
+      })
     }
   })
   .controller('VerificationCtrl', function ($scope, Skill) {
