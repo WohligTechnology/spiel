@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('VerificationCtrl', function ($scope, Skill) {
-    $scope.user = Skill.getUser();
+
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();

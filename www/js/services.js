@@ -16,6 +16,8 @@ angular.module('starter.services', [])
       getUser: function () {
         if (!user) {
           $state.go("login");
+        } else if (user.accessLevel == "Pending") {
+          $state.go("verification");
         }
         return user;
       },
