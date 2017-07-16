@@ -45,41 +45,58 @@ angular.module('starter.controllers', ['ionic'])
     if ($stateParams.id === "" || !$stateParams.id || $stateParams.id == Skill.getUser()._id) {
       $scope.myProfile = true;
     }
-    Skill.getUserSkill($stateParams.id, function (data) {
-      _.assign($scope, data);
-    });
+
+    function refresh() {
+      Skill.getUserSkill($stateParams.id, function (data) {
+        _.assign($scope, data);
+      });
+    }
+    refresh();
+
+
+    function requestSkill(skill, reason) {
+      skill.approvalStatus = "Pending";
+      Skill.requestSkill(skill, reason, function (data) {
+        refresh();
+      });
+    }
 
     $scope.popupForm = {
       requestReason: ""
     };
-    $scope.createRequestSkill = function () {
-      var myPopup = $ionicPopup.show({
-        template: '<textarea ng-model="popupForm.requestReason" style="padding:10px;resize:none;" rows="4" cols="50" placeholder="Please enter your details for your request"></textarea>',
-        title: 'Skill Moderation Requested',
-        scope: $scope,
-        buttons: [{
-            text: 'Cancel',
-            onTap: function (e) {
-              $scope.popupForm = {
-                requestReason: ""
-              };
-            }
-          },
-          {
-            text: 'Request',
-            type: 'button-positive',
-            onTap: function (e) {
-              if ($scope.popupForm.requestReason === "") {
-                e.preventDefault();
-              } else {
+    $scope.createRequestSkill = function (skill) {
+      if (skill.approvalStatus != "Pending" && skill.approvalStatus != "Approved") {
+
+        var myPopup = $ionicPopup.show({
+          template: '<textarea ng-model="popupForm.requestReason" style="padding:10px;resize:none;" rows="4" cols="50" placeholder="Please enter your details for your request"></textarea>',
+          title: 'Skill Moderation Requested',
+          scope: $scope,
+          buttons: [{
+              text: 'Cancel',
+              onTap: function (e) {
                 $scope.popupForm = {
                   requestReason: ""
                 };
               }
+            },
+            {
+              text: 'Request',
+              type: 'button-positive',
+              onTap: function (e) {
+                if ($scope.popupForm.requestReason === "") {
+                  e.preventDefault();
+                } else {
+                  requestSkill(skill._id, $scope.popupForm.requestReason);
+                  $scope.popupForm = {
+                    requestReason: ""
+                  };
+                }
+              }
             }
-          }
-        ]
-      });
+          ]
+        });
+      }
+
     };
 
   })

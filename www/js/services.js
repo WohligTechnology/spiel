@@ -88,6 +88,20 @@ angular.module('starter.services', [])
             //show some alert
           }
         });
+      },
+      requestSkill: function (skill, reasonForRequest, callback) {
+        $http.post(adminUrl + "requestSkill/save", {
+          _accessToken: user.accessToken,
+          skill: skill,
+          reasonForRequest: reasonForRequest,
+          user: user._id
+        }).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
       }
     };
   });
