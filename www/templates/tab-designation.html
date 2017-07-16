@@ -3,7 +3,7 @@
   <ion-nav-bar class="bar-positive"> </ion-nav-bar>
   <ion-content>
     <ul class="list">
-      <a class="item item-icon-right" ng-repeat="designation in designations" ui-sref="tab.designation-detail({id:''})">
+      <a class="item item-icon-right" ng-repeat="designation in designations" ui-sref="tab.designation-detail({id:designation._id})">
     {{designation.name}}
        <i class="icon ion-ios-arrow-right"></i>
   </a>

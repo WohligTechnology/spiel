@@ -1,55 +1,24 @@
-<ion-view view-title="Designation" side="center">
+<ion-view side="center">
   <ion-nav-bar class="bar-positive">
     <ion-nav-back-button class="button-clear">
     </ion-nav-back-button>
   </ion-nav-bar>
+  <ion-nav-title>
+    {{designation.name}}
+  </ion-nav-title>
+
+
   <ion-content>
-    <!-- skills -->
     <div class="list">
 
-      <div class="item item-divider">
-        Lodash
-      </div>
+      <div ng-repeat="(skillCategory,subSkills) in skills">
+        <div class="item item-divider">
+          {{skillCategory}}
+        </div>
 
-      <a class="item item-icon-right">
-    _.each
-    <i class="icon ion-ios-plus-outline positive"></i>
+        <a class="item item-icon-right" ng-click="createRequestSkill(skill);" ng-repeat="skill in subSkills">
+    {{skill.name}} {{skill.approvalStatus}}
+     <i class="icon {{skill.approvalStatus|skillStatusIcon:myProfile}}"></i>
   </a>
-      <a class="item item-icon-right">
-    _.map
-    <i class="icon ion-ios-checkmark-outline balanced"></i>
-  </a>
-      <a class="item item-icon-right">
-    _.filter
-    <i class="icon ion-ios-glasses-outline royal"></i>
-  </a>
-      <a class="item item-icon-right">
-    _.cloneDeep
-    <i class="icon ion-ios-close-outline assertive"></i>
-  </a>
-
-      <div class="item item-divider">
-        Async
-      </div>
-
-      <a class="item item-icon-right">
-    _.each
-    <i class="icon ion-ios-plus-outline positive"></i>
-  </a>
-      <a class="item item-icon-right">
-    _.eachLimit
-    <i class="icon ion-ios-checkmark-outline balanced"></i>
-  </a>
-      <a class="item item-icon-right">
-    _.concat
-    <i class="icon ion-ios-glasses-outline royal"></i>
-  </a>
-      <a class="item item-icon-right">
-    _.parallel
-    <i class="icon ion-ios-close-outline assertive"></i>
-  </a>
-    </div>
-
-    <!-- end of skills -->
   </ion-content>
 </ion-view>

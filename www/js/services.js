@@ -16,7 +16,19 @@ angular.module('starter.services', [])
           user: data
         }).then(function (data) {
           if (data.status == 200) {
-            callback(data.data);
+            data = data.data;
+            var retVal = {};
+            retVal.user = data.data.user;
+            _.each(data.data.requestedSkill, function (n) {
+              var skillNo = _.findIndex(data.data.skill, function (m) {
+                return m._id == n.skill;
+              });
+              if (skillNo >= 0) {
+                data.data.skill[skillNo].approvalStatus = n.approvalStatus;
+              }
+            });
+            retVal.skills = _.groupBy(data.data.skill, "skillCategory.name");
+            callback(retVal);
           } else {
             //show some alert
           }
@@ -53,6 +65,29 @@ angular.module('starter.services', [])
       setUser: function (data) {
         user = data;
         user = $.jStorage.set("user", user);
+      },
+      getDesignations: function (callback) {
+        $http.post(adminUrl + "designation/search", {
+          _accessToken: user.accessToken
+        }).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
+      },
+      getDesignation: function (data, callback) {
+        $http.post(adminUrl + "designation/getOne", {
+          _accessToken: user.accessToken,
+          _id: data
+        }).then(function (data) {
+          if (data.status == 200) {
+            callback(data.data);
+          } else {
+            //show some alert
+          }
+        });
       }
     };
   });

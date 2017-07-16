@@ -34,27 +34,19 @@ angular.module('starter.controllers', ['ionic'])
     };
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
+    $scope.user = Skill.getUser();
     Skill.getLeaderboard(function (data) {
       $scope.userlist = data.data;
     });
-    $scope.user = Skill.getUser();
+
   })
   .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
-    console.log("this is profile controller");
+    $scope.user = Skill.getUser();
     if ($stateParams.id === "" || !$stateParams.id || $stateParams.id == Skill.getUser()._id) {
       $scope.myProfile = true;
     }
     Skill.getUserSkill($stateParams.id, function (data) {
-      $scope.user = data.data.user;
-      _.each(data.data.requestedSkill, function (n) {
-        var skillNo = _.findIndex(data.data.skill, function (m) {
-          return m._id == n.skill;
-        });
-        if (skillNo >= 0) {
-          data.data.skill[skillNo].approvalStatus = n.approvalStatus;
-        }
-      });
-      $scope.skills = _.groupBy(data.data.skill, "skillCategory.name");
+      _.assign($scope, data);
     });
 
     $scope.popupForm = {
@@ -92,39 +84,24 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('ProfileDetailCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
-    console.log("this is profile Detail controller");
-
+    $scope.user = Skill.getUser();
     Skill.getUserSkill($stateParams.id, function (data) {
-      $scope.user = data.data.user;
-      _.each(data.data.requestedSkill, function (n) {
-        var skillNo = _.findIndex(data.data.skill, function (m) {
-          return m._id == n.skill;
-        });
-        if (skillNo >= 0) {
-          data.data.skill[skillNo].approvalStatus = n.approvalStatus;
-        }
-      });
-      $scope.skills = _.groupBy(data.data.skill, "skillCategory.name");
+      _.assign($scope, data);
     });
   })
   .controller('DesignationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
-    $scope.designations = [{
-      name: "Beginner"
-    }, {
-      name: "Full Stack Developer"
-    }, {
-      name: "Backend Developer"
-    }, {
-      name: "Frontend Developer"
-    }, {
-      name: "Frontend Expert"
-    }, {
-      name: "Backend Expert"
-    }];
+    Skill.getDesignations(function (data) {
+      $scope.designations = data.data.results;
+    });
   })
-  .controller('DesignationDetailCtrl', function ($scope, Skill) {
+  .controller('DesignationDetailCtrl', function ($scope, $stateParams, Skill) {
     $scope.user = Skill.getUser();
+    Skill.getDesignation($stateParams.id, function (data) {
+      $scope.designation = data.data;
+      console.log(data.data.neededSkill);
+      $scope.skills = _.groupBy(data.data.neededSkill, "skillCategory.name");
+    });
   })
   .controller('NotificationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
