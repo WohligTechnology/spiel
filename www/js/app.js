@@ -111,4 +111,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/leaderboard');
 
+  })
+  .filter('designations', function () {
+    // In the return function, we must pass in a single parameter which will be the data we will work on.
+    // We have the ability to support multiple other parameters that can be passed into the filter optionally
+    return function (input) {
+      console.log(input);
+      var sorted = _.sortBy(input, function (n) {
+        return moment(n.timestamp).unix() * -1;
+      });
+      var names = _.map(sorted, "designation.name");
+      return _.join(names, ", ");
+      // Do filter work here
+    };
+
   });
