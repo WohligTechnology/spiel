@@ -10,11 +10,14 @@ angular.module('starter.controllers', ['ionic'])
 
 
 
-  })
-  .controller('VerificationCtrl', function ($scope) {
+
 
   })
-  .controller('LeaderboardCtrl', function ($scope) {
+  .controller('VerificationCtrl', function ($scope) {
+    $scope.user = Skill.getUser();
+  })
+  .controller('LeaderboardCtrl', function ($scope, Skill) {
+    $scope.user = Skill.getUser();
     $scope.userlist = [{
         firstname: 'Bhargav',
         lastname: 'Purohit',
@@ -33,6 +36,7 @@ angular.module('starter.controllers', ['ionic'])
     ];
   })
   .controller('ProfileCtrl', function ($scope, $ionicPopup) {
+    $scope.user = Skill.getUser();
     $scope.user = {
       firstName: "Sanket",
       lastName: "Deshmukh",
@@ -44,6 +48,7 @@ angular.module('starter.controllers', ['ionic'])
     };
 
     $scope.createRequestSkill = function () {
+
       var myPopup = $ionicPopup.show({
         template: '<textarea ng-model="popupForm.requestReason" style="padding:10px;resize:none;" rows="4" cols="50" placeholder="Please enter your details for your request"></textarea>',
         title: 'Skill Moderation Requested',
@@ -75,6 +80,7 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('DesignationCtrl', function ($scope) {
+    $scope.user = Skill.getUser();
     $scope.designations = [{
       name: "Beginner"
     }, {
@@ -90,9 +96,10 @@ angular.module('starter.controllers', ['ionic'])
     }];
   })
   .controller('DesignationDetailCtrl', function ($scope) {
-
+    $scope.user = Skill.getUser();
   })
   .controller('NotificationCtrl', function ($scope) {
+    $scope.user = Skill.getUser();
     $scope.notifications = [{
       text: "Your skill for Git is approved"
     }, {
