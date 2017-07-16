@@ -27,6 +27,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.navBar.alignTitle('center');
+    $ionicConfigProvider.backButton.previousTitleText(false);
+    $ionicConfigProvider.backButton.icon('ion-ios-arrow-left');
+    $ionicConfigProvider.backButton.text('');
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
@@ -81,6 +84,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
+      .state('tab.designation-detail', {
+        url: '/designation/:id',
+        views: {
+          'tab-designation': {
+            templateUrl: 'templates/tab-designation-detail.html',
+            controller: 'DesignationDetailCtrl'
+          }
+        }
+      })
 
       .state('tab.notification', {
         url: '/notification',
@@ -93,6 +105,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/tab/leaderboard');
 
   });

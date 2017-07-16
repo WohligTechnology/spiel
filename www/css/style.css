@@ -31,3 +31,9 @@ body {
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.timestamp {
+  font-size: 0.8em;
+  float: right;
+  color: #999;
+}

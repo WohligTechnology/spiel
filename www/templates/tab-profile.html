@@ -1,0 +1,68 @@
+<ion-view>
+  <ion-nav-bar class="bar-positive">
+  </ion-nav-bar>
+  <ion-nav-title>
+    {{user.firstName}} {{user.lastName}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-telephone-outline">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <!-- profile -->
+    <div class="item item-avatar item-button-right">
+      <img src="img/images.jpg">
+      <p><span>{{user.currentLevel}}</span></p>
+    </div>
+    <!-- end of profile -->
+    <!-- skills -->
+    <div class="list">
+
+      <div class="item item-divider">
+        Lodash
+      </div>
+
+      <a class="item item-icon-right">
+    _.each
+    <i class="icon ion-ios-plus-outline positive"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.map
+    <i class="icon ion-ios-checkmark-outline balanced"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.filter
+    <i class="icon ion-ios-glasses-outline royal"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.cloneDeep
+    <i class="icon ion-ios-close-outline assertive"></i>
+  </a>
+
+      <div class="item item-divider">
+        Async
+      </div>
+
+      <a class="item item-icon-right">
+    _.each
+    <i class="icon ion-ios-plus-outline positive"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.eachLimit
+    <i class="icon ion-ios-checkmark-outline balanced"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.concat
+    <i class="icon ion-ios-glasses-outline royal"></i>
+  </a>
+      <a class="item item-icon-right">
+    _.parallel
+    <i class="icon ion-ios-close-outline assertive"></i>
+  </a>
+    </div>
+
+    <!-- end of skills -->
+  </ion-content>
+</ion-view>

@@ -5,12 +5,11 @@
 
   <ion-content>
     <div class="list">
-
-      <a class="item item-avatar" href="#" ng-repeat="user in userlist">
+      <a class="item item-avatar item-icon-right" ng-repeat="user in userlist" ui-sref="tab.profile({id:''})">
       <img src="img/images.jpg">
       <h2>{{user.firstname}} {{user.lastname}}</h2>
-      <p>Ratings: <span><i class="icon ion-star"></i><i class="icon ion-star"></i></span></p>
-      <p>Current Level: <span>{{user.currentLevel}}</span></p>
+      <p><span>{{user.currentLevel}}</span></p>
+       <i class="icon ion-ios-arrow-right"></i>
     </a>
 
     </div>
