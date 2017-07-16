@@ -2,11 +2,11 @@ angular.module('starter.controllers', ['ionic'])
 
   .controller('LoginCtrl', function ($scope) {
 
-    var ref = cordova.InAppBrowser.open(adminurl + "user/googleLogin", "_blank", {
-      location: "no",
-      hidden: "no",
-      toolbar: "yes"
-    });
+    // var ref = cordova.InAppBrowser.open(adminurl + "user/googleLogin", "_blank", {
+    //   location: "no",
+    //   hidden: "no",
+    //   toolbar: "yes"
+    // });
 
   })
   .controller('VerificationCtrl', function ($scope) {
