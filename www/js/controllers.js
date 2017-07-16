@@ -1,7 +1,11 @@
 angular.module('starter.controllers', [])
 
-  .controller('LoginCtrl', function ($scope) {})
-  .controller('VerificationCtrl', function ($scope) {})
+  .controller('LoginCtrl', function ($scope) {
+
+  })
+  .controller('VerificationCtrl', function ($scope) {
+
+  })
   .controller('LeaderboardCtrl', function ($scope) {
     $scope.userlist = [{
         firstname: 'Bhargav',
