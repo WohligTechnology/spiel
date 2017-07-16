@@ -139,8 +139,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // In the return function, we must pass in a single parameter which will be the data we will work on.
     // We have the ability to support multiple other parameters that can be passed into the filter optionally
     return function (input, isSameUser) {
-      var classArr = ["ion-ios-plus-outline positive", "ion-ios-checkmark-outline balanced", "ion-ios-glasses-outline royal", "ion-ios-close-outline stable"];
-      return classArr[0];
+      var classArr = ["ion-ios-plus-outline positive",
+        "ion-ios-checkmark-outline balanced",
+        "ion-ios-glasses-outline royal",
+        "ion-ios-close-outline stable"
+      ];
+      var num = 3;
+      if (input == "Approved") {
+        num = 1;
+      } else if (input == "Pending" && isSameUser) {
+        num = 2;
+      } else if (isSameUser) {
+        num = 0;
+      }
+      return classArr[num];
     };
 
   })

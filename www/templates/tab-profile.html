@@ -26,8 +26,8 @@
         </div>
 
         <a class="item item-icon-right" ng-click="createRequestSkill(skill);" ng-repeat="skill in subSkills">
-    {{skill.name}}
-    <i class="icon {{skill|skillStatusIcon:myProfile}}"></i>
+    {{skill.name}} {{skill.approvalStatus}}
+     <i class="icon {{skill.approvalStatus|skillStatusIcon:myProfile}}"></i>
   </a>
 
       </div>

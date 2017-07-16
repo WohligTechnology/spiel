@@ -19,7 +19,7 @@ angular.module('starter.controllers', ['ionic'])
   .controller('VerificationCtrl', function ($scope, Skill, $state) {
     var form = {
       accessToken: $.jStorage.get("user").accessToken
-    }
+    };
     $scope.refresh = function () {
       Skill.login(form, function (data) {
         if (data.value) {
@@ -30,8 +30,8 @@ angular.module('starter.controllers', ['ionic'])
             $state.go("verification");
           }
         }
-      })
-    }
+      });
+    };
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
     Skill.getLeaderboard(function (data) {
@@ -45,6 +45,14 @@ angular.module('starter.controllers', ['ionic'])
     }
     Skill.getUserSkill($stateParams.id, function (data) {
       $scope.user = data.data.user;
+      _.each(data.data.requestedSkill, function (n) {
+        var skillNo = _.findIndex(data.data.skill, function (m) {
+          return m._id == n.skill;
+        });
+        if (skillNo >= 0) {
+          data.data.skill[skillNo].approvalStatus = n.approvalStatus;
+        }
+      });
       $scope.skills = _.groupBy(data.data.skill, "skillCategory.name");
     });
 
