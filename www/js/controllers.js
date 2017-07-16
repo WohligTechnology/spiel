@@ -7,11 +7,10 @@ angular.module('starter.controllers', ['ionic'])
         console.log("Data", data);
         if (data.value) {
           Skill.setUser(data.data);
-          console.log("Success");
           $state.go("tab.leaderboard");
         }
-      })
-    }
+      });
+    };
   })
   .controller('VerificationCtrl', function ($scope, Skill) {
 
@@ -21,37 +20,20 @@ angular.module('starter.controllers', ['ionic'])
       $scope.userlist = data.data;
     });
     $scope.user = Skill.getUser();
-    // $scope.userlist = [{
-    //     firstname: 'Bhargav',
-    //     lastname: 'Purohit',
-    //     currentLevel: "Fresher"
-    //   },
-    //   {
-    //     firstname: 'Ashish',
-    //     lastname: 'Zanwar',
-    //     currentLevel: "Full Stack"
-    //   },
-    //   {
-    //     firstname: 'Sanket',
-    //     lastname: 'Deshmukh',
-    //     currentLevel: "Full Stack"
-    //   }
-    // ];
   })
-  .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill) {
-    $scope.user = Skill.getUser();
-    $scope.user = {
-      firstName: "Sanket",
-      lastName: "Deshmukh",
-      currentLevel: "Full Stack Developer"
-    };
+  .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
+    if ($stateParams.id === "" || !$stateParams.id) {
+      $scope.myProfile = true;
+    }
+    Skill.getUserSkill($stateParams.id, function (data) {
+      $scope.user = data.data.user;
+      $scope.skills = _.groupBy(data.data.skill, "skillCategory.name");
+    });
 
     $scope.popupForm = {
       requestReason: ""
     };
-
     $scope.createRequestSkill = function () {
-
       var myPopup = $ionicPopup.show({
         template: '<textarea ng-model="popupForm.requestReason" style="padding:10px;resize:none;" rows="4" cols="50" placeholder="Please enter your details for your request"></textarea>',
         title: 'Skill Moderation Requested',

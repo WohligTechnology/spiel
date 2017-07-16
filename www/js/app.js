@@ -116,7 +116,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // In the return function, we must pass in a single parameter which will be the data we will work on.
     // We have the ability to support multiple other parameters that can be passed into the filter optionally
     return function (input) {
-      console.log(input);
       var sorted = _.sortBy(input, function (n) {
         return moment(n.timestamp).unix() * -1;
       });
@@ -125,4 +124,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // Do filter work here
     };
 
-  });
+  })
+  .filter('dobShow', function () {
+    // In the return function, we must pass in a single parameter which will be the data we will work on.
+    // We have the ability to support multiple other parameters that can be passed into the filter optionally
+    return function (input) {
+      var output = moment(input).format("Do MMM");
+      return output;
+      // Do filter work here
+    };
+
+  })
+  .filter('skillStatusIcon', function () {
+    // In the return function, we must pass in a single parameter which will be the data we will work on.
+    // We have the ability to support multiple other parameters that can be passed into the filter optionally
+    return function (input, isSameUser) {
+      var classArr = ["ion-ios-plus-outline positive", "ion-ios-checkmark-outline balanced", "ion-ios-glasses-outline royal", "ion-ios-close-outline stable"];
+      return classArr[0];
+    };
+
+  })
+
+
+
+;

@@ -7,7 +7,10 @@ angular.module('starter.services', [])
 
     var user = $.jStorage.get("user");
     return {
-      getUserSkill: function (data) {
+      getUserSkill: function (data, callback) {
+        if (data === "") {
+          data = undefined;
+        }
         $http.post(adminUrl + "user/getDetails", {
           _accessToken: user.accessToken,
           user: data
