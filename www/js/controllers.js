@@ -8,6 +8,8 @@ angular.module('starter.controllers', ['ionic'])
     //   toolbar: "yes"
     // });
 
+
+
   })
   .controller('VerificationCtrl', function ($scope) {
 
