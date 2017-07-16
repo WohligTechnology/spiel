@@ -1,19 +1,9 @@
 angular.module('starter.controllers', ['ionic'])
 
-  .controller('LoginCtrl', function ($scope) {
-
-    // var ref = cordova.InAppBrowser.open(adminurl + "user/googleLogin", "_blank", {
-    //   location: "no",
-    //   hidden: "no",
-    //   toolbar: "yes"
-    // });
-
-
-
-
+  .controller('LoginCtrl', function ($scope, Skill) {
 
   })
-  .controller('VerificationCtrl', function ($scope) {
+  .controller('VerificationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
   })
   .controller('LeaderboardCtrl', function ($scope, Skill) {
@@ -35,7 +25,7 @@ angular.module('starter.controllers', ['ionic'])
       }
     ];
   })
-  .controller('ProfileCtrl', function ($scope, $ionicPopup) {
+  .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill) {
     $scope.user = Skill.getUser();
     $scope.user = {
       firstName: "Sanket",
@@ -79,7 +69,7 @@ angular.module('starter.controllers', ['ionic'])
     };
 
   })
-  .controller('DesignationCtrl', function ($scope) {
+  .controller('DesignationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
     $scope.designations = [{
       name: "Beginner"
@@ -95,10 +85,10 @@ angular.module('starter.controllers', ['ionic'])
       name: "Backend Expert"
     }];
   })
-  .controller('DesignationDetailCtrl', function ($scope) {
+  .controller('DesignationDetailCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
   })
-  .controller('NotificationCtrl', function ($scope) {
+  .controller('NotificationCtrl', function ($scope, Skill) {
     $scope.user = Skill.getUser();
     $scope.notifications = [{
       text: "Your skill for Git is approved"
