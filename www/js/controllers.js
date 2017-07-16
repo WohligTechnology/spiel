@@ -40,7 +40,7 @@ angular.module('starter.controllers', ['ionic'])
     $scope.user = Skill.getUser();
   })
   .controller('ProfileCtrl', function ($scope, $ionicPopup, Skill, $stateParams) {
-    if ($stateParams.id === "" || !$stateParams.id) {
+    if ($stateParams.id === "" || !$stateParams.id || $stateParams.id == Skill.getUser()._id) {
       $scope.myProfile = true;
     }
     Skill.getUserSkill($stateParams.id, function (data) {
