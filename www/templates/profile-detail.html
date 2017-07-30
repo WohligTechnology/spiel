@@ -15,7 +15,7 @@
   <ion-content>
     <!-- profile -->
     <div class="item item-avatar item-button-right">
-      <img src="img/images.jpg">
+      <img ng-src="{{user.photo|imageUrl:100:100:'cover'}}">
       <h2>{{user.designation|designations}} </h2>
       <p><span>Dob: {{user.dob|dobShow}}</span></p>
     </div>

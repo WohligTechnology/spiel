@@ -8,7 +8,7 @@
   <ion-content>
     <div class="list">
       <a class="item item-avatar item-icon-right" ng-repeat="user in userlist" ui-sref="tab.profileDetail({id:user._id})">
-      <img src="img/images.jpg">
+      <img ng-src="{{user.photo|imageUrl:100:100:'cover'}}">
       <h2>{{user.name}}</h2>
       <p><span>{{user.designation|designations}}</span></p>
        <i class="icon ion-ios-arrow-right"></i>

@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var adminUrl = "http://wohlig.io/api/";
+var adminU = "https://spiel.wohlig.com/";
+var adminUrl = adminU + "api/";
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .run(function ($ionicPlatform) {
@@ -143,6 +144,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       var output = moment(input).format("Do MMM");
       return output;
       // Do filter work here
+    };
+
+  })
+  .filter('imageUrl', function () {
+    return function (input, width, height, style) {
+      var retVal = "";
+      if (_.isEmpty(input)) {
+        retVal = "img/images.jpg";
+      } else {
+        if (_.startsWith(input, "http")) {
+          retVal = input;
+        } else {
+          retVal = adminUrl + "upload/readFile?file=" + input;
+          if (width) {
+            retVal += "&width=" + width;
+          }
+          if (height) {
+            retVal += "&height=" + height;
+          }
+          if (style) {
+            retVal += "&style=" + style;
+          }
+        }
+      }
+      return retVal;
     };
 
   })
