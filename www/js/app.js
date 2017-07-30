@@ -16,7 +16,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
 
-      window.open = cordova.InAppBrowser.open;
+
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
