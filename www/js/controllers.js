@@ -64,7 +64,8 @@ angular.module('starter.controllers', ['ionic'])
 
 
     function refresh() {
-      Skill.getUserSkill($stateParams.id, function (data) {
+
+      Skill.getUserSkill($.jStorage.get("user")._id, function (data) {
         _.assign($scope, data);
       });
     }
